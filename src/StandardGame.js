@@ -52,7 +52,7 @@ class StandardGame {
 
     // prepare the map
     this.map = game.add.tilemap(name)
-    this.map.setCollisionByExclusion([7, 32, 35, 36, 47])
+    this.map.setCollisionByExclusion([1])
     this.map.addTilesetImage('X11tiles-20-20.png', 'tiles')
 
     // create a layer for collition
@@ -61,7 +61,7 @@ class StandardGame {
 
     // create main-character
     this.player = game.add.sprite(300, 90, 'dude')
-    //    this.player.scale.set(0.7)
+    this.player.scale.set(0.5)
     this.player.animations.add('left', [0, 1, 2, 3], 10, true)
     this.player.animations.add('turn', [4], 20, true)
     this.player.animations.add('right', [5, 6, 7, 8], 10, true)
