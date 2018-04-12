@@ -1,4 +1,15 @@
-# nephis-world
+### nephis-world
+
+# Werkzeuge die wir benutzen
+
+o Tiles http://www.mapeditor.org/
+o Javascript (Programmier tool zum Beispiel Visual Studio Code)
+
+# Tiled
+
+Maps sind Grundsätzlich 32x18 tiles zu gestalten
+
+# Generelle Infos
 
 Eine Sci-fi Interpretation des Buch Mormon
 * Rollenspiel mit statischen Bildschirmen und Hack&Slash Mechanik
