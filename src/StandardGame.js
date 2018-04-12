@@ -4,7 +4,7 @@ class StandardGame {
 
   preload() {
     game.load.tilemap('level3', 'levels/TestMap.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tiles', 'levels/X11tiles-20-20-1.png', 20, 20)
+    game.load.image('tiles', 'levels/TestMapTileset.png', 20, 20)
     //    game.load.tilemap('level3', 'levels/cybernoid.json', null, Phaser.Tilemap.TILED_JSON);
     //    game.load.image('tiles', 'levels/CybernoidMap3BG_bank.png', 16, 16)
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48)
@@ -57,7 +57,7 @@ class StandardGame {
     // prepare the map
     this.map = game.add.tilemap(name)
     this.map.setCollisionByExclusion([1])
-    this.map.addTilesetImage('X11tiles-20-20-1.png', 'tiles')
+    this.map.addTilesetImage('TestMapTileset.png', 'tiles')
 
     // create a layer for collition
     this.layer = this.map.createLayer(0)

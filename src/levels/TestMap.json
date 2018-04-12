@@ -21,11 +21,11 @@
         {
          "columns":40,
          "firstgid":1,
-         "image":"..\/nephis-world\/src\/levels\/X11tiles-20-20-1.png",
+         "image":"..\/nephis-world\/src\/levels\/TestMapTileset.png",
          "imageheight":540,
          "imagewidth":800,
          "margin":0,
-         "name":"X11tiles-20-20-1.png",
+         "name":"TestMapTileset.png",
          "spacing":0,
          "tilecount":1080,
          "tileheight":20,

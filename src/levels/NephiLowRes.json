@@ -599,11 +599,11 @@
     "tilesets": [
         {
             "firstgid": 1,
-            "image": "X11tiles-20-20.png",
+            "image": "MainTileset.png",
             "imageheight": 800,
             "imagewidth": 540,
             "margin": 0,
-            "name": "X11tiles-20-20.png",
+            "name": "MainTileset.png",
             "properties": {},
             "spacing": 0,
             "tileheight": 20,
