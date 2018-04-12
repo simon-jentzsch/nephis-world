@@ -2,8 +2,8 @@
 
 # Werkzeuge die wir benutzen
 
-o Tiles http://www.mapeditor.org/
-o Javascript (Programmier tool zum Beispiel Visual Studio Code)
+- Tiles http://www.mapeditor.org/
+- Javascript (Programmier tool zum Beispiel Visual Studio Code)
 
 # Tiled
 
