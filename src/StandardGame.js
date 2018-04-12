@@ -50,6 +50,11 @@ class StandardGame {
       player.animations.play('down')
       player.facing = 0
     }
+
+
+    // update enemies
+    if (this.enemies)
+      this.enemies.forEach(_ => _.update())
   }
 
   startLevel(name) {
@@ -83,6 +88,12 @@ class StandardGame {
 
     // cursor-keys
     this.cursors = game.input.keyboard.createCursorKeys()
+
+
+    this.enemies = [
+      new Enemy(500, 30, 'dude', this),
+      new Enemy(100, 300, 'dude', this)
+    ]
   }
 
 
