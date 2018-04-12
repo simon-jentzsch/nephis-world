@@ -1,13 +1,22 @@
-### nephis-world
+## nephis-world
 
 # Werkzeuge die wir benutzen
 
 - Tiles http://www.mapeditor.org/
-- Javascript (Programmier tool zum Beispiel Visual Studio Code)
+- Git https://git-scm.com/
+- Nodejs https://nodejs.org/en/
+- Programmiertool zum Beispiel Visual Studio Code https://code.visualstudio.com/
+
+# Installationsanleitung
+
+- Installiert git auf eurem Rechner
+- Installiert nodejs auf eurem Rechner
+- Installiert Tiles auf eurem Rechner
+- (Optional) Installiert Visual Studio Code
 
 # Tiled
 
-Maps sind Grundsätzlich 32x18 tiles zu gestalten
+Maps sind Grundsätzlich 32x18 tiles zu gestalten. Spride sheets (die Bilder mit allen Bildern drinne) könnte ihr frei wählen solange ihr die ins Github repository ablegt.
 
 # Generelle Infos
 
