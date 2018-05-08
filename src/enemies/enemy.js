@@ -81,7 +81,7 @@ class Enemy {
     const body = this.sprite.body
 
     const distance = Math.sqrt((this.sprite.x - this.level.player.x) ^ 2 + (this.sprite.y - this.level.player.y) ^ 2)
-    if (distance < 50) {
+    if (distance < 10) {
       Object.assign(body.velocity, {
         x: 0,
         y: 0

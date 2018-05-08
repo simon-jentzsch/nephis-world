@@ -8,6 +8,7 @@ class StandardGame {
     //    game.load.tilemap('level3', 'levels/cybernoid.json', null, Phaser.Tilemap.TILED_JSON);
     //    game.load.image('tiles', 'levels/CybernoidMap3BG_bank.png', 16, 16)
     game.load.spritesheet('dude', 'assets/dude.png', 32, 48)
+    game.load.spritesheet('enemy', 'assets/enemy.png', 32, 48)
   }
 
   create() {
@@ -18,7 +19,8 @@ class StandardGame {
     if (!this.cursors) return
     const cursors = this.cursors
     const player = this.player
-    const directionUp = true
+    const lmovement = false
+    const rmovement = false
 
     // check the main character for collisions with the tilemap
     game.physics.arcade.collide(player, this.layer)
@@ -26,7 +28,8 @@ class StandardGame {
     // reset speed to 0
     player.body.velocity.x = player.body.velocity.y = 0
 
-    if (cursors.up.isDown) { // up
+    //old player movement
+    /*if (cursors.up.isDown) { // up
       player.body.velocity.y = -200
       player.animations.play('up')
 
@@ -50,6 +53,34 @@ class StandardGame {
       player.animations.play('down')
       player.facing = 0
     }
+*/
+
+//new player movement
+if (cursors.up.isDown && !cursors.down.isDown) { 
+  player.body.velocity.y = -200 
+  player.animations.play('up') 
+} else if (cursors.down.isDown && !cursors.up.isDown) { 
+  player.body.velocity.y = 200 
+  player.animations.play('down') 
+} 
+
+if (cursors.left.isDown && !cursors.right.isDown) { 
+  player.body.velocity.x = -200 
+  player.animations.play('left')
+}  else if (cursors.right.isDown && !cursors.left.isDown) { 
+  player.body.velocity.x = 200 
+  player.animations.play('right')  
+} 
+
+if (cursors.right.isDown && cursors.left.isDown) { 
+  player.body.velocity.x = player.body.velocity.y = 0 
+  player.animations.play('down')  
+} else if (cursors.up.isDown && cursors.down.isDown) { 
+  player.body.velocity.x = player.body.velocity.y = 0 
+  player.animations.play('down')  
+}
+
+
 
 
     // update enemies
@@ -71,17 +102,17 @@ class StandardGame {
     // create main-character
     this.player = game.add.sprite(300, 90, 'dude')
     this.player.scale.set(0.7)
-    this.player.animations.add('left', [0, 1, 2, 3], 10, true)
-    this.player.animations.add('down', [4], 20, true)
-    this.player.animations.add('right', [5, 6, 7, 8], 10, true)
-    this.player.animations.add('up', [9], 10, true)
+    this.player.animations.add('left', [1, 2, 3, 0], 15, false)
+    this.player.animations.add('down', [4], 20, false)
+    this.player.animations.add('right', [6, 7, 8, 5], 15, false)
+    this.player.animations.add('up', [9], 10, false)
     // enabling physic means giving him a body
     game.physics.enable(this.player)
     //  Because both our body and our tiles are so tiny,
     //  and the body is moving pretty fast, we need to add
     //  some tile padding to the body. WHat this does
     //  in order to make collisions easier
-    //  player.body.tilePadding.set(32, 32)
+    //player.body.tilePadding.set(32, 32)
 
     // enable scrolling
     game.camera.follow(this.player)
@@ -91,8 +122,9 @@ class StandardGame {
 
 
     this.enemies = [
-      new Enemy(500, 30, 'dude', this),
-      new Enemy(100, 300, 'dude', this)
+      new Enemy(500, 30, 'enemy', this),
+      new Enemy(100, 300, 'enemy', this),
+      new Enemy(400, 250, 'enemy', this)
     ]
   }
 
