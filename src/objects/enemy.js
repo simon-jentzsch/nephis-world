@@ -1,7 +1,10 @@
 /// <reference path="../node_modules/phaser/typescript/phaser.d.ts" />
 
+
+let counter = 1
 class Enemy {
   constructor(x, y, name, level) {
+    this.id = counter++
     this.level = level
     this.sprite = game.add.sprite(x, y, name)
     this.sprite.scale.set(0.7)
@@ -77,11 +80,12 @@ class Enemy {
   }
 
 
+
   update() {
     const body = this.sprite.body
 
-    const distance = Math.sqrt((this.sprite.x - this.level.player.x) ^ 2 + (this.sprite.y - this.level.player.y) ^ 2)
-    if (distance < 10) {
+    const distance = this.getDistanceToPlayer()
+    if (distance < 30) {
       Object.assign(body.velocity, {
         x: 0,
         y: 0
@@ -108,5 +112,23 @@ class Enemy {
 
   }
 
+  getDistanceToPlayer() {
+    return Math.sqrt(p2(this.sprite.x - this.level.player.sprite.x) + p2(this.sprite.y - this.level.player.sprite.y))
+
+  }
+
+  kill() {
+    const index = this.level.enemies.indexOf(this)
+    if (index >= 0) {
+      this.level.enemies.splice(index, 1)
+      this.sprite.destroy()
+    }
+
+  }
+
 
 }
+
+
+
+const p2 = a => a * a
