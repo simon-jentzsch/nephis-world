@@ -32,7 +32,7 @@ class Player {
 
     this.checkActions()
 
-    if (this.mode !== 'talk') {
+    if (!this.mode) {
 
       //new player movement
       if (cursors.up.isDown && !cursors.down.isDown) {
@@ -85,6 +85,16 @@ class Player {
 
       }
     }
+    if (!this.mode && game.input.keyboard.isDown(81)) { // 'q'
+      console.log('hit...')
+        const enemy = this.findEnemy()
+        console.log(' enemy ',enemy)
+        if (enemy) {
+          this.mode = 'fight'
+          enemy.damage(30)
+          setTimeout(()=>this.mode='',500)
+        }
+    }
 
   }
 
@@ -97,3 +107,45 @@ class Player {
 }
 
 
+
+
+
+
+
+const dialog = {
+  'hello': [
+    {
+      q: 'Wer bist du denn?',
+      answer: [
+        {
+          txt: 'Na wer wohl...',
+          next: 'bye'
+        },
+        {
+          txt: 'Hau ab!',
+          next: 'bye'
+        }
+      ]
+    },
+    {
+      q: 'Was klotzt du denn so?',
+      answer: [
+        {
+          txt: 'Ich habe heute einen schlechten Tag',
+          next: 'bye'
+        },
+        {
+          txt: 'Hau ab!',
+          next: 'bye'
+        }
+      ]
+    }
+  ],
+
+  'bye': [
+    
+  ]
+
+
+
+}

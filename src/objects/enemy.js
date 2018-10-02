@@ -5,6 +5,7 @@ let counter = 1
 class Enemy {
   constructor(x, y, name, level) {
     this.id = counter++
+    this.health = 100
     this.level = level
     this.sprite = game.add.sprite(x, y, name)
     this.sprite.scale.set(0.7)
@@ -12,6 +13,7 @@ class Enemy {
     this.sprite.animations.add('down', [4], 20, true)
     this.sprite.animations.add('right', [5, 6, 7, 8], 10, true)
     this.sprite.animations.add('up', [9], 10, true)
+    this.healthLabel = game.add.text(0,0, '', { font: "12px Arial", fill: "#ff0044", align: "center" });
 
     game.physics.enable(this.sprite)
   }
@@ -83,6 +85,9 @@ class Enemy {
 
   update() {
     const body = this.sprite.body
+    this.healthLabel.x = this.sprite.x
+    this.healthLabel.y = this.sprite.y -8
+    this.healthLabel.text = this.health+'%'
 
     const distance = this.getDistanceToPlayer()
     if (distance < 30) {
@@ -122,9 +127,19 @@ class Enemy {
     if (index >= 0) {
       this.level.enemies.splice(index, 1)
       this.sprite.destroy()
+      this.healthLabel.destroy()
     }
-
   }
+
+  damage(strength) {
+
+    this.health-=strength
+    console.log('got hit ',this.health)
+    if (this.health<0)
+       this.kill()
+  }
+ 
+
 
 
 }
